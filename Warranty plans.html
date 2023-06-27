@@ -1,0 +1,118 @@
+<script type="text/javascript">
+  // dans le html embed, nous avons déclaré les boutons avec le lancement de la fonction standard ou optimum lors du clique sur l'un des deux
+  //on stocke notre background dans la variable bg ce qui nous permettra de l'utiliser plus facilement plus tard
+  var bg = document.getElementById("section-plans-bg");
+  //on initialise l'opacité du bg a 0.
+  bg.style.opacity = "0";
+  
+  //on récupère l'image croix et on ajoute un évènement dessus, si on clique sur la croix, la fonction close avec comme paramètre la section correspondante se lance.
+  document.getElementById("croix-standard").addEventListener("click", () => { close("section-standard") });
+  //on récupère l'image croix et on ajoute un évènement dessus, si on clique sur la croix, la fonction close avec comme paramètre la section correspondante se lance.
+  document.getElementById("croix-optimum").addEventListener("click", () => { close("section-optimum") });
+  
+  // on récupère la checkbox displayMeasuringArmStandard et on ajoute un évènement si son état change (checked ou pas).
+  document.getElementById("measuring-arm-standard-checkbox").addEventListener("change", displayMeasuringArmStandard);
+  // on récupère la checkbox displayMeasuringArmStandard et on ajoute un évènement si son état change (checked ou pas).
+  document.getElementById("scanner-standard-checkbox").addEventListener("change", displayScannerStandard);
+  // on récupère la checkbox displayMeasuringArmStandard et on ajoute un évènement si son état change (checked ou pas).
+   document.getElementById("measuring-arm-optimum-checkbox").addEventListener("change", displayMeasuringArmOptimum);
+   // on récupère la checkbox displayMeasuringArmStandard et on ajoute un évènement si son état change (checked ou pas).
+  document.getElementById("scanner-optimum-checkbox").addEventListener("change", displayScannerOptimum);
+  // on récupère le bouton submit et on ajoute un évènement s'il est cliqué.
+  document.getElementById("submitStandard").addEventListener("click", submitStandard);
+  // on récupère le bouton submit et on ajoute un évènement s'il est cliqué.
+  document.getElementById("submitOptimum").addEventListener("click", submitOptimum);
+  
+  //cette fonction permet d'afficher ou non selon l'état de la div measuring-arm-column sur le form standard
+  function displayMeasuringArmStandard(){
+    if(document.getElementById("measuring-arm-standard-checkbox").checked){
+      document.getElementById("measuring-arm-column").style.display = "block";
+    }else{
+      document.getElementById("measuring-arm-column").style.display = "none";
+    }
+  }
+  //cette fonction permet d'afficher ou non selon l'état de la div scanner-column sur le form standard
+  function displayScannerStandard(){
+    if(document.getElementById("scanner-standard-checkbox").checked){
+      document.getElementById("scanner-column").style.display = "block";
+    }else{
+      document.getElementById("scanner-column").style.display = "none";
+    }
+  }
+  //cette fonction permet d'afficher ou non selon l'état de la div measuring-arm-column sur le form optimum
+  function displayMeasuringArmOptimum(){
+    if(document.getElementById("measuring-arm-optimum-checkbox").checked){
+      document.getElementById("measuring-arm-column-optimum").style.display = "block";
+    }else{
+      document.getElementById("measuring-arm-column-optimum").style.display = "none";
+    }
+  }
+  //cette fonction permet d'afficher ou non selon l'état de la div scanner-column sur le form optimum
+  function displayScannerOptimum(){
+    if(document.getElementById("scanner-optimum-checkbox").checked){
+      document.getElementById("scanner-column-optimum").style.display = "block";
+    }else{
+      document.getElementById("scanner-column-optimum").style.display = "none";
+    }
+  }
+  //cette fonction permet d'affiche avec l'animation ease-out from top le formulaire standard.
+  function standard(){
+    bg.style.zIndex = "100";
+    bg.style.opacity = "1";
+    bg.style.transition = "1s";
+    document.getElementById("section-standard").style.transitionTimingFunction = "ease-out";
+    document.getElementById("section-standard").style.transform = "translateY(300%)";
+    document.getElementById("section-standard").style.transition = "1s";
+  }
+  //cette fonction permet d'affiche avec l'animation ease-out from top le formulaire optimum.
+  function optimum(){
+    bg.style.zIndex = "100";
+    bg.style.opacity = "1";
+    bg.style.transition = "1s";
+    document.getElementById("section-optimum").style.transitionTimingFunction = "ease-out";
+    document.getElementById("section-optimum").style.transform = "translateY(300%)";
+    document.getElementById("section-optimum").style.transition = "1s";
+  }
+  
+  //la fonction close prend en paramètre la section que l'on doit faire disparaitre de l'écran, et l'enlève avec l'animation ease-in et la fait partir vers le haut
+  function close(x){
+    bg.style.opacity = "0";
+    bg.style.transition = "1s";
+    bg.style.zIndex = "-10";
+    document.getElementById(x).style.transitionTimingFunction = "ease-in";
+    document.getElementById(x).style.transform = "translateY(0%)";
+    document.getElementById(x).style.transition = "1s";
+  }
+  //la fonction submitOptimum permet de supprimer les checkbox qui ne sont pas checked ce qui permet de vérifier si toutes les cases à remplir l'on était et ceux qui ne le sont pas sont supprimées.
+  function submitOptimum(){
+    //si une des deux checkbox est checked alors, je demande à ce que les checkbox ne soit plus en required pour que le formulaire puisse s'envoyer
+    if(document.getElementById("measuring-arm-optimum-checkbox").checked || document.getElementById("scanner-optimum-checkbox").checked){
+      document.getElementById("measuring-arm-optimum-checkbox").required = false;
+      document.getElementById("scanner-optimum-checkbox").required = false;
+      //si la checkbox n'est pas checked alors on la remove
+      if(!document.getElementById("measuring-arm-optimum-checkbox").checked){
+        document.getElementById("measuring-arm-column-optimum").remove();
+      }
+      //si la checkbox n'est pas checked alors on la remove
+      if(!document.getElementById("scanner-optimum-checkbox").checked){
+        document.getElementById("scanner-column-optimum").remove();
+      }
+    }
+  }
+  //la fonction submitStandard permet de supprimer les checkbox qui ne sont pas checked ce qui permet de vérifier si toutes les cases à remplir l'on était et ceux qui ne le sont pas sont supprimées.
+  function submitStandard(){
+  //si une des deux checkbox est checked alors, je demande à ce que les checkbox ne soit plus en required pour que le formulaire puisse s'envoyer
+    if(document.getElementById("measuring-arm-standard-checkbox").checked || document.getElementById("scanner-standard-checkbox").checked){
+      document.getElementById("measuring-arm-standard-checkbox").required = false;
+      document.getElementById("scanner-standard-checkbox").required = false;
+      //si la checkbox n'est pas checked alors on la remove
+      if(!document.getElementById("measuring-arm-standard-checkbox").checked){
+        document.getElementById("measuring-arm-column").remove();
+      }
+      //si la checkbox n'est pas checked alors on la remove
+      if(!document.getElementById("scanner-standard-checkbox").checked){
+        document.getElementById("scanner-column").remove();
+      }
+    }
+  }
+</script>

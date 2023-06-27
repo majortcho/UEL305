@@ -1,0 +1,55 @@
+<script type="text/javascript">
+	//on stock notre background dans la variable bg ce qui nous permettra de l'utiliser plus facielement plus tard
+	var bg = document.getElementById("section-dl-bg");
+  //on initialise l'opacité du bg a 0.
+  bg.style.opacity = "0";
+  // on récupère l'image track-ace-dl et on ajoute un évènement si on clique sur celle-ci, si l'image est cliqué alors, on lance la fonction download avec comme paramètre la section correspondante à l'image
+	document.getElementById("track-ace-dl").addEventListener("click", () => { download("section-track-ace-dl") });
+  //on récupère l'image croix et on ajoute un évènement dessus, si on clique sur la croix, la fonction close avec comme paramètre la section correspondante se lance.
+  document.getElementById("croix-track-ace").addEventListener("click", () => { close("section-track-ace-dl") });
+  
+  // on récupère l'image ace-dl et on ajoute un évènement si on clique sur celle-ci, si l'image est cliqué alors, on lance la fonction download avec comme paramètre la section correspondante à l'image
+	document.getElementById("ace-dl").addEventListener("click", () => { download("section-ace-dl") });
+  //on récupère l'image croix et on ajoute un évènement dessus, si on clique sur la croix, la fonction close avec comme paramètre la section correspondante se lance.
+  document.getElementById("croix-ace").addEventListener("click", () => { close("section-ace-dl") });
+  
+  // on récupère l'image  baces-dl et on ajoute un évènement si on clique sur celle-ci, si l'image est cliqué alors, on lance la fonction download avec comme paramètre la section correspondante à l'image
+  document.getElementById("baces-dl").addEventListener("click", () => { download("section-baces-dl") });
+  //on récupère l'image croix et on ajoute un évènement dessus, si on clique sur la croix, la fonction close avec comme paramètre la section correspondante se lance.
+  document.getElementById("croix-baces").addEventListener("click", () => { close("section-baces-dl") });
+  
+  // on récupère l'image onyx-dl et on ajoute un évènement si on clique sur celle-ci, si l'image est cliqué alors, on lance la fonction download avec comme paramètre la section correspondante à l'image
+  document.getElementById("onyx-dl").addEventListener("click", () => { download("section-onyx-dl") });
+  //on récupère l'image croix et on ajoute un évènement dessus, si on clique sur la croix, la fonction close avec comme paramètre la section correspondante se lance.
+  document.getElementById("croix-onyx").addEventListener("click", () => { close("section-onyx-dl") });
+  
+  // on récupère l'image zephyr-dl et on ajoute un évènement si on clique sur celle-ci, si l'image est cliqué alors, on lance la fonction download avec comme paramètre la section correspondante à l'image
+  document.getElementById("zephyr-dl").addEventListener("click", () => { download("section-zephyr-dl") });
+  //on récupère l'image croix et on ajoute un évènement dessus, si on clique sur la croix, la fonction close avec comme paramètre la section correspondante se lance.
+  document.getElementById("croix-zephyr").addEventListener("click", () => { close("section-zephyr-dl") });
+  
+  // on récupère l'image zenith-dl et on ajoute un évènement si on clique sur celle-ci, si l'image est cliqué alors, on lance la fonction download avec comme paramètre la section correspondante à l'image
+  document.getElementById("zenith-dl").addEventListener("click", () => { download("section-zenith-dl") });
+  //on récupère l'image croix et on ajoute un évènement dessus, si on clique sur la croix, la fonction close avec comme paramètre la section correspondante se lance.
+  document.getElementById("croix-zenith").addEventListener("click", () => { close("section-zenith-dl") });
+  
+  // la fonction download prend en paramètre la section que l'on doit aficher et l'affiche avec l'animation ease-out from top.
+  function download(x){
+		bg.style.zIndex = "100";
+    bg.style.opacity = "1";
+   	bg.style.transition = "1s";
+    document.getElementById(x).style.transitionTimingFunction = "ease-out";
+    document.getElementById(x).style.transform = "translateY(300%)";
+    document.getElementById(x).style.transition = "1s";
+  }
+  
+  //la fonction close prend en paramètre la section que l'on doit faire disparaitre de l'écran, et l'enlève avec l'animation ease-in et la fait partir vers le haut
+  function close(x){
+  	bg.style.opacity = "0";
+   	bg.style.transition = "1s";
+    bg.style.zIndex = "-10";
+    document.getElementById(x).style.transitionTimingFunction = "ease-in";
+    document.getElementById(x).style.transform = "translateY(0%)";
+    document.getElementById(x).style.transition = "1s";
+  }
+</script>

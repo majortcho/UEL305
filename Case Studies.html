@@ -1,0 +1,14 @@
+<script type="text/javascript">
+//quand la page charge, on lance la fonction remove
+window.onload = remove();
+// cette fonction nous permet de supprimer tous les articles qui ne sont pas des case studies.
+function remove(){
+	//je récupère dans ma page tous les éléments avec la classe "w-dyn-empty"
+	const remove = document.getElementsByClassName("w-dyn-empty");
+  //je fais une boucle while qui va supprimer les articles de la page qui ne sont pas des case studies tant que la constante remove n'est pas vide.
+  while(remove.length > 0){
+//cela permet de remonter dans les parents de la classe qui est vide et de supprimer l'article en entier.
+remove[0].parentElement.parentElement.parentElement.removeChild(remove[0].parentElement.parentElement);
+  }
+}
+</script>

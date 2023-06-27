@@ -1,0 +1,39 @@
+<script type="text/javascript">
+//je récupère l'ID de mon sélecteur 'why-selector' et j'ajoute un événement dessus, lorsque je change de cible dans mon sélecteur, j'appelle la fonction changement.
+document.getElementById('why-selector').addEventListener('change', changement);
+//je récupère l'ID de mon boutton 'submit' et je lui ajoute un événement, lorsque je clique dessus, j'appelle la fonction submit.
+document.getElementById('submit').addEventListener('click', submit);
+//je stocke mes différentes div dans un tableau.
+var divId = ['armAccuracy','armConnection','scannerAccuracy','scannerConnection','dongle','other'];
+//je déclare une variable i et je l'initialise à 0 celle-ci va me permettre de savoir quel est le sélecteur qui a été choisi.
+var i = 0;
+//cette variable me permet juste de stocker un sélecteur que je vais souvent utiliser ce qui est plus pratique pour moi.
+var whySelector = document.getElementById('why-selector');
+//cette variable me permet juste de stocker un sélecteur que je vais souvent utiliser ce qui est plus pratique pour moi.
+var rgpd = document.getElementById('rgpd');
+
+function changement(){
+	//je récupère l'index selectionné et je le stock dans ma varaible i.
+	i = whySelector.selectedIndex;
+	//je fais une bouclel pour mettre l'affichage de toute mes div a none.
+  for(let x = 0; x < divId.length ; x++){
+  	document.getElementById(divId[x]).style.display = "none";
+  }
+  //ainsi que ma div rgpd.
+  rgpd.style.display = "none";
+  //si mon index selectionné est suppérieur a 0 alors j'affiche la div.
+  if(i > 0){
+  	document.getElementById(divId[i-1]).style.display = "block";
+    rgpd.style.display = "block";
+  }
+}
+
+function submit(){
+	//je fais une boucle pour supprimer les child-div de why qui ne sont pas selectionné.
+	for(let ii = 1; ii < whySelector.length; ii++){
+		if(ii != i){
+			document.getElementById(divId[ii-1]).remove();
+		}
+	}
+}
+</script>

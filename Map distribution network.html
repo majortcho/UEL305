@@ -1,0 +1,93 @@
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+     crossorigin=""/>
+<style type="text/css">
+#map{
+	z-index:1;
+}
+</style>
+ <div id="map"></div>
+
+
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+     crossorigin="">
+</script>
+<script type="text/javascript">
+ //création de la map
+    const accessToken = 'geV1YuShXmObHTLXQLEprir6yZ3iTrwUBkAmQx90Fw4rNEQPkXg5TFZ9q1fe0q2Z';
+    const map = L.map('map').setView([48.866667, 2.333333], 3);
+    L.tileLayer(
+      `https://tile.jawg.io/jawg-terrain/{z}/{x}/{y}.png?access-token=${accessToken}`, {
+        attribution: '<a href="http://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank" class="jawg-attrib">&copy; <b>Jawg</b>Maps</a> | <a href="https://www.openstreetmap.org/copyright" title="OpenStreetMap is open data licensed under ODbL" target="_blank" class="osm-attrib">&copy; OSM contributors</a>',
+        maxZoom: 22
+      }
+    ).addTo(map);
+  //création d'une nouvelle icone avec sa taille, son image, la taille de son popup.
+    var redIcon = new L.Icon({
+  iconUrl: 'https://uploads-ssl.webflow.com/62bc3a0289b700bb6b803d49/642d2f186e06ee2db7c2118b_marker-icon-2x-red.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
+    //création des différents marqueur sur la map pour indiquer les ou ce situe les distributeurs.
+    L.marker([48.988, 2.301], {icon: redIcon}).addTo(map).bindPopup('Soisy-sous-Montmorency');
+    L.marker([52.573921, -0.250830], {icon: redIcon}).addTo(map).bindPopup('Peterborough');
+    L.marker([53.1, -2.4333], {icon: redIcon}).addTo(map).bindPopup('Crewe');
+    L.marker([13.736717, 100.523186], {icon: redIcon}).addTo(map).bindPopup('Bangkok');
+    L.marker([45.480039, -0.250830], {icon: redIcon}).addTo(map).bindPopup('Portland');
+    L.marker([42.963795, -85.670006], {icon: redIcon}).addTo(map).bindPopup('Grand Rapids');
+    L.marker([43.595310, -79.640579], {icon: redIcon}).addTo(map).bindPopup('Mississauga');
+    L.marker([33.8044614, -118.1678456], {icon: redIcon}).addTo(map).bindPopup('Signal Hill');
+    L.marker([38.328732, -85.764771], {icon: redIcon}).addTo(map).bindPopup('Louisville');
+    L.marker([39.0839973, -77.1527578], {icon: redIcon}).addTo(map).bindPopup('Rockville');
+    L.marker([36.044659, -79.766235], {icon: redIcon}).addTo(map).bindPopup('Greensboro');
+    L.marker([36.174465, -86.767960], {icon: redIcon}).addTo(map).bindPopup('Nashville');
+    L.marker([34.852619, -82.394012], {icon: redIcon}).addTo(map).bindPopup('Greenville');
+    L.marker([52.486243, -1.890401], {icon: redIcon}).addTo(map).bindPopup('Birmingham');
+    L.marker([25.686613, -100.316116], {icon: redIcon}).addTo(map).bindPopup('Monterrey');
+    L.marker([20.6596988, -103.3496092], {icon: redIcon}).addTo(map).bindPopup('Guadalajara');
+    L.marker([20.588793, -100.389888], {icon: redIcon}).addTo(map).bindPopup('Santiago de Querétaro');
+    L.marker([23.634501, -102.552784], {icon: redIcon}).addTo(map).bindPopup('Mexico');
+    L.marker([-33.469120, -70.641997], {icon: redIcon}).addTo(map).bindPopup('São Paulo');
+    L.marker([60.3833, 24.75], {icon: redIcon}).addTo(map).bindPopup('Klaukkala');
+    L.marker([59.934280, 30.335099], {icon: redIcon}).addTo(map).bindPopup('Saint-Pétersbourg');
+    L.marker([58.349800, 11.935649], {icon: redIcon}).addTo(map).bindPopup('Uddevalla');
+    L.marker([56.8338774, 13.9410417], {icon: redIcon}).addTo(map).bindPopup('Ljungby');
+    L.marker([55.757425, 37.619183], {icon: redIcon}).addTo(map).bindPopup('Moscou');
+    L.marker([54.687157, 25.279652], {icon: redIcon}).addTo(map).bindPopup('Vilnius');
+    L.marker([50.6903579, 5.5922106], {icon: redIcon}).addTo(map).bindPopup('Milmort');
+    L.marker([47.213848, 8.094528], {icon: redIcon}).addTo(map).bindPopup('Büron');
+    L.marker([45.0705, 7.5192], {icon: redIcon}).addTo(map).bindPopup('Rivoli');
+    L.marker([43.2152, -2.4142], {icon: redIcon}).addTo(map).bindPopup('Elgoibar');
+    L.marker([41.1579438, -8.6291053], {icon: redIcon}).addTo(map).bindPopup('Porto');
+    L.marker([46.0923, 13.1305], {icon: redIcon}).addTo(map).bindPopup('Martignacco');
+    L.marker([50.124981, 19.009438], {icon: redIcon}).addTo(map).bindPopup('Tychy');
+    L.marker([49.1583, 17.0736], {icon: redIcon}).addTo(map).bindPopup('Milonice');
+    L.marker([48.3839, 16.5168], {icon: redIcon}).addTo(map).bindPopup('Wolkersdorf im Weinviertel');
+    L.marker([48.148598, 17.107748], {icon: redIcon}).addTo(map).bindPopup('Bratislava');
+    L.marker([47.5111, 18.93], {icon: redIcon}).addTo(map).bindPopup('Budakeszi');
+    L.marker([44.4267674, 26.1025384], {icon: redIcon}).addTo(map).bindPopup('Bucarest');
+    L.marker([41.00527, 28.97696], {icon: redIcon}).addTo(map).bindPopup('Istanbul');
+    L.marker([39.342557, 22.882049], {icon: redIcon}).addTo(map).bindPopup('Vólos');
+    L.marker([32.801442, 34.979901], {icon: redIcon}).addTo(map).bindPopup('Kadima');
+    L.marker([35.696111, 51.423056], {icon: redIcon}).addTo(map).bindPopup('Téhéran');
+    L.marker([-29.087217, 26.154898], {icon: redIcon}).addTo(map).bindPopup('Bloemfontein');
+    L.marker([25.2048493, 55.2707828], {icon: redIcon}).addTo(map).bindPopup('Dubaï');
+    L.marker([31.582045, 74.329376], {icon: redIcon}).addTo(map).bindPopup('Lahore');
+    L.marker([18.516726, 73.856255], {icon: redIcon}).addTo(map).bindPopup('Pune');
+    L.marker([51.5133, -0.1886], {icon: redIcon}).addTo(map).bindPopup('Bayswater');
+    L.marker([3.140853, 101.693207], {icon: redIcon}).addTo(map).bindPopup('Kuala Lumpur');
+    L.marker([10.762622, 106.660172], {icon: redIcon}).addTo(map).bindPopup('Hô Chi Minh');
+    L.marker([21.028511, 105.804817], {icon: redIcon}).addTo(map).bindPopup('Hanoï');
+    L.marker([22.633333, 120.266670], {icon: redIcon}).addTo(map).bindPopup('Kaohsiung');
+    L.marker([31.230416, 121.473701], {icon: redIcon}).addTo(map).bindPopup('Shanghai');
+    L.marker([31.299999, 120.599998], {icon: redIcon}).addTo(map).bindPopup('Suzhou');
+    L.marker([31.565372, 120.327583], {icon: redIcon}).addTo(map).bindPopup('Wuxi');
+    L.marker([35.709026, 139.731992], {icon: redIcon}).addTo(map).bindPopup('Tokyo');
+    L.marker([37.566535, 126.9779692], {icon: redIcon}).addTo(map).bindPopup('Séoul');
+    L.marker([36.066898, 120.382698], {icon: redIcon}).addTo(map).bindPopup('Qingdao');
+    L.marker([39.084158, 117.200983], {icon: redIcon}).addTo(map).bindPopup('Tianjin');
+</script>

@@ -1,0 +1,19 @@
+<!-- on importe les bibliothèques nécessaires pour faire notre counter up en jquery-->
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.0/jquery.waypoints.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/jquery.counterup@2.1.0/jquery.counterup.min.js"></script>
+<script>
+    //lors du chargement de la page, on déclare une variable year qui crée une nouvelle date, ensuite on récupère l'année et on la stock fans la variable year puis on fait l'année - 91 car les années sont compté ainsi : 1901 = 1; 2000 = 100 donc vu que la date de création de l'entreprise est de 1991 on fait -91, puis on l'insert avec un innerHTML sur l'id coutnerUp.
+    window.onload = (event) => {
+        var year = new Date();
+        year = year.getYear();
+        year = year-91;
+        document.getElementById("counterup").innerHTML = year;
+        };
+        //la fonction nous permet d'afficher un compteur qui démarre avec 150ms de délai quand il apparait a l'écran et arrive à son nombre final en une seconde.
+        jQuery(document).ready(function( $ ) {
+          $('.counterup').counterUp({
+          delay: 150, // the delay time in ms
+          time: 1000 // the speed time in ms
+    });
+    });
+</script>

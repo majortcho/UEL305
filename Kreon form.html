@@ -1,0 +1,226 @@
+<script type="text/javascript">
+//je récupère l'ID de mon sélecteur 'why-selector' et j'ajoute un événement dessus, lorsque je change de cible dans mon sélecteur, j'appelle la fonction changement.
+document.getElementById('why-selector').addEventListener('change', changement);
+//je récupère l'ID de mon sélecteur 'product-selector' et j'ajoute un événement dessus, lorsque je change de cible dans mon sélecteur, j'appelle la fonction changementProduct.
+document.getElementById('product-selector').addEventListener('change', changementProduct);
+//je récupère l'ID de mon sélecteur 'demo-selector' et j'ajoute un événement dessus, lorsque je change de cible dans mon sélecteur, j'appelle la fonction changementDemo.
+document.getElementById('demo-selector').addEventListener('change', changementDemo);
+//je récupère l'ID de mon sélecteur 'demo-selector-show' et j'ajoute un événement dessus, lorsque je change de cible dans mon sélecteur, j'appelle la fonction changementDemoShow.
+document.getElementById('demo-selector-show').addEventListener('change', changementDemoShow);
+//je récupère l'ID de mon boutton 'submit' et je lui ajoute un événement, lorsque je clique dessus, j'appelle la fonction submit.
+document.getElementById('submit').addEventListener('click', submit);
+
+//je crée des variables qui stock les ID de mes différentes Div que je vais afficher ou non. Vu que je vais réutiliser ces requêtes dans plusieurs fonctions, cela me permet de ne pas trop surcharger la page et d'aérer mon code pour y voir plus clair.
+var quote = document.getElementById('quote');
+var recommendation = document.getElementById('recommendation');
+var demo = document.getElementById('demo');
+var reseller = document.getElementById('reseller');
+var other = document.getElementById('other');
+var rgpd = document.getElementById('rgpd');
+var whySelector = document.getElementById('why-selector');
+
+//Début de la fonction changement
+function changement(){
+
+	//je teste si le sélecteur sur lequel s'est mis l'utilisateur est le premier, 	si oui, je n'affiche rien
+	if(whySelector.selectedIndex == 0){
+		quote.style.display = "none";
+		demo.style.display = "none";
+    recommendation.style.display = "none";
+    reseller.style.display = "none";
+    other.style.display = "none";
+    rgpd.style.display = "none";
+	}
+ 	//je teste si le sélecteur sur lequel s'est mis l'utilisateur est le deuxième, si oui, j'affiche la Div quote mais pas la Div RGPD car l'utilisateur doit encore faire un choix avant de pouvoir envoyer sa demande
+	if(whySelector.selectedIndex == 1){
+  	quote.style.display = "block";
+		demo.style.display = "none";
+    recommendation.style.display = "none";
+    reseller.style.display = "none";
+    other.style.display = "none";
+    rgpd.style.display = "none";
+	}
+  //je teste si le sélecteur sur lequel s'est mis l'utilisateur est le troisième, si oui, j'affiche la Div demo, mais pas la Div RGPD car l'utilisateur doit encore faire un choix avant de pouvoir envoyer sa demande
+	if(whySelector.selectedIndex == 2){
+		quote.style.display = "none";
+		demo.style.display = "block";
+    recommendation.style.display = "none";
+    reseller.style.display = "none";
+    other.style.display = "none";
+    rgpd.style.display = "none";
+  }
+  //je teste si le sélecteur sur lequel s'est mis l'utilisateur est le troisième, si oui, j'affiche la Div recommendation, j'affiche la div RGPD pour que l'utilisateur puisse envoyer sa demande.
+	if(whySelector.selectedIndex == 3){
+  	quote.style.display = "none";
+		demo.style.display = "none";
+    recommendation.style.display = "block";
+    reseller.style.display = "none";
+    other.style.display = "none";
+    rgpd.style.display = "block";
+	}
+  //je teste si le sélecteur sur lequel s'est mis l'utilisateur est le quatrième, si oui, j'affiche la Div reseller, j'affiche la div RGPD pour que l'utilisateur puisse envoyer sa demande.
+	if(whySelector.selectedIndex == 4){
+		quote.style.display = "none";
+		demo.style.display = "none";
+    recommendation.style.display = "none";
+    reseller.style.display = "block";
+    other.style.display = "none";
+    rgpd.style.display = "block";
+  }
+  //je teste si le sélecteur sur lequel s'est mis l'utilisateur est le troisième, si oui, j'affiche la Div other, j'affiche la div rgpd pour que l'utilisateur puisse envoyer sa demande.
+	if(whySelector.selectedIndex == 5){
+		quote.style.display = "none";
+		demo.style.display = "none";
+    recommendation.style.display = "none";
+    reseller.style.display = "none";
+    other.style.display = "block";
+    rgpd.style.display = "block";
+  }
+}
+
+function changementProduct(){
+	var productSelector = document.getElementById('product-selector');
+	var arm = document.getElementById('arm');
+  var armScanner = document.getElementById('arm-scanner');
+  var scanner = document.getElementById('scanner');
+  var robot = document.getElementById('robot');
+  var tracking = document.getElementById('tracking');
+  
+	if(productSelector.selectedIndex == 0){
+  	arm.style.display = "none";
+    armScanner.style.display = "none";
+    scanner.style.display = "none";
+    robot.style.display = "none";
+    tracking.style.display = "none";
+	}
+  if(productSelector.selectedIndex == 1){
+  	arm.style.display = "block";
+    armScanner.style.display = "none";
+    scanner.style.display = "none";
+    robot.style.display = "none";
+    tracking.style.display = "none";
+	}
+  if(productSelector.selectedIndex == 2){
+  	arm.style.display = "none";
+    armScanner.style.display = "block";
+    scanner.style.display = "none";
+    robot.style.display = "none";
+    tracking.style.display = "none";
+	}
+  if(productSelector.selectedIndex == 3){
+  	arm.style.display = "none";
+    armScanner.style.display = "none";
+    scanner.style.display = "block";
+    robot.style.display = "none";
+    tracking.style.display = "none";
+	}
+  if(productSelector.selectedIndex == 4){
+  	arm.style.display = "none";
+    armScanner.style.display = "none";
+    scanner.style.display = "none";
+    robot.style.display = "none";
+    tracking.style.display = "block";
+	}
+  if(productSelector.selectedIndex == 5){
+  	arm.style.display = "none";
+    armScanner.style.display = "none";
+    scanner.style.display = "none";
+    robot.style.display = "none";
+    tracking.style.display = "block";
+	}
+	
+}
+function changementDemo(){
+	var armDemo = document.getElementById('arm-demo');
+  var armScannerDemo = document.getElementById('arm-scanner-demo');
+  var scannerDemo = document.getElementById('scanner-demo');
+  var robotDemo = document.getElementById('robot-demo');
+  var trackingDemo = document.getElementById('tracking-demo');
+	var demoSelector = document.getElementById('demo-selector-demo');
+  
+	if(demoSelector.selectedIndex == 0){
+		armDemo.style.display = "none";
+    armScannerDemo.style.display = "none";
+    scannerDemo.style.display = "none";
+    robotDemo.style.display = "none";
+    trackingDemo.style.display = "none";
+	}
+ 	if(demoSelector.selectedIndex == 1){
+		armDemo.style.display = "block";
+    armScannerDemo.style.display = "none";
+    scannerDemo.style.display = "none";
+    robotDemo.style.display = "none";
+    trackingDemo.style.display = "none";
+	}
+  if(demoSelector.selectedIndex == 2){
+		armDemo.style.display = "none";
+    armScannerDemo.style.display = "block";
+    scannerDemo.style.display = "none";
+    robotDemo.style.display = "none";
+    trackingDemo.style.display = "none";
+  }
+  if(demoSelector.selectedIndex == 3){
+		armDemo.style.display = "none";
+    armScannerDemo.style.display = "none";
+    scannerDemo.style.display = "block";
+    robotDemo.style.display = "none";
+    trackingDemo.style.display = "none";
+	}
+  if(demoSelector.selectedIndex == 4){
+		armDemo.style.display = "none";
+    armScannerDemo.style.display = "none";
+    scannerDemo.style.display = "none";
+    robotDemo.style.display = "block";
+    trackingDemo.style.display = "none";
+	}
+  if(demoSelector.selectedIndex == 5){
+		armDemo.style.display = "none";
+    armScannerDemo.style.display = "none";
+    scannerDemo.style.display = "none";
+    robotDemo.style.display = "none";
+    trackingDemo.style.display = "block";
+	}
+}
+function changementDemoShow(){
+  var demoShow = document.getElementById('demo-show');
+	if(document.getElementById('demo-selector-show').selectedIndex == 0){
+  	demoShow.style.display = "none";
+    rgpd.style.display = "none";
+  }else{
+  	demoShow.style.display = "block";
+    rgpd.style.display = "block";
+  }
+}
+function submit(){
+	if(whySelector.selectedIndex == 1){
+		recommendation.remove();
+    demo.remove();
+    reseller.remove();
+    other.remove();
+  }
+  if(whySelector.selectedIndex == 2){
+		quote.remove();
+    recommendation.remove();
+    reseller.remove();
+    other.remove();
+  }
+  if(whySelector.selectedIndex == 3){
+		demo.remove();
+    quote.remove();
+    reseller.remove();
+    other.remove();
+  }
+  if(whySelector.selectedIndex == 4){
+		recommendation.remove();
+    demo.remove();
+    quote.remove();
+    other.remove();
+  }
+  if(whySelector.selectedIndex == 5){
+		recommendation.remove();
+    demo.remove();
+    reseller.remove();
+    quote.remove();
+  }
+}
+</script>

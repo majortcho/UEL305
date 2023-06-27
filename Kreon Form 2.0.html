@@ -1,0 +1,105 @@
+<script type="text/javascript">
+//je récupère l'ID de mon sélecteur 'why-selector' et j'ajoute un événement dessus, lorsque je change de cible dans mon sélecteur, j'appelle la fonction changement.
+document.getElementById('why-selector').addEventListener('change', changement);
+//je récupère l'ID de mon sélecteur 'product-selector' et j'ajoute un événement dessus, lorsque je change de cible dans mon sélecteur, j'appelle la fonction changementProduct.
+document.getElementById('product-selector').addEventListener('change', changementProduct);
+//je récupère l'ID de mon sélecteur 'demo-selector-show' et j'ajoute un événement dessus, lorsque je change de cible dans mon sélecteur, j'appelle la fonction changementDemoShow.
+document.getElementById('demo-selector-show').addEventListener('change', changementDemoShow);
+//je récupère l'ID de mon sélecteur 'demo-selector' et j'ajoute un événement dessus, lorsque je change de cible dans mon sélecteur, j'appelle la fonction changementDemo.
+document.getElementById('demo-selector').addEventListener('change', changementDemo);
+//je récupère l'ID de mon boutton 'submit' et je lui ajoute un événement, lorsque je clique dessus, j'appelle la fonction submit.
+document.getElementById('submit').addEventListener('click', submit);
+
+//je crée des variables qui stock les ID de mes différentes Div/Selector que je vais afficher ou non. Vu que je vais réutiliser ces requêtes dans plusieurs fonctions, cela me permet de ne pas trop surcharger la page et d'aérer mon code pour y voir plus clair.
+var rgpd = document.getElementById('rgpd');
+var whySelector = document.getElementById('why-selector');
+var productSelector = document.getElementById('product-selector');
+var demoSelector = document.getElementById('demo-selector');
+var divId = ['quote','demo','recommendation','reseller','other'];
+var divIdProduct = ['arm','arm-scanner','scanner','robot','tracking'];
+var divIdDemo = ['arm-demo','arm-scanner-demo','scanner-demo','robot-demo','tracking-demo'];
+//la variable i est un compteur, je linitialise ici pour pouvoir l'utiliser dans plusieurs fonction.
+var i = 0;
+//Début de la fonction changement, cette fonction sert a afficher les differentes child-div correspondants a la div why.
+function changement(){
+	//je récupère l'index selectionné et je le stock dans ma varaible i.
+	i = whySelector.selectedIndex;
+	//je fais une bouclel pour mettre l'affichage de toute mes div a none.
+    for(let x = 0; x < divId.length ; x++){
+  		document.getElementById(divId[x]).style.display = "none";
+  	}
+  	//ainsi que ma div rgpd.
+  	rgpd.style.display = "none";
+  	//si mon index selectionné est suppérieur a 0 alors j'affiche la div.
+  	if(i > 0){
+  		document.getElementById(divId[i-1]).style.display = "block";
+  	//et si mon index selectionné n'est pas égal a 1 et 2 alors j'affiche ma div rgpd.
+  	if(i != 1 && i != 2){
+  		rgpd.style.display = "block";
+  	}
+  }
+}
+//début de la fonction changementProduct, cette fonction sert a afficher les differentes child-div correspondants a la div quote.
+function changementProduct(){
+	let ii = productSelector.selectedIndex;
+	for(let x = 0; x < divIdProduct.length; x++){
+		document.getElementById(divIdProduct[x]).style.display = "none";
+	}
+	if(ii > 0){
+		document.getElementById(divIdProduct[ii-1]).style.display = "block";
+		rgpd.style.display = "block";
+	}
+
+}
+//début de la fontion changementDemoShow cette fonction sert a afficher les differentes child-div correspondants a la div demonstration/enligne ou onsite.
+function changementDemoShow(){
+	//je stock mon id dans ma variable pour que ce soit plus lisible.
+	let demoShow = document.getElementById('demo-show');
+	//si mon index selectionné est égale a 0 alors j'affiche rien
+	if(document.getElementById('demo-selector-show').selectedIndex == 0){
+		demoShow.style.display = "none";
+		rgpd.style.display = "none";
+	//sinon j'affiche ma div et mon rgpd.
+  	}else{
+  	demoShow.style.display = "block";
+    rgpd.style.display = "block";
+  }
+}
+//début de la fonction changementDemo, cette fonction sert a afficher les differentes child-div correspondants a la div demonstration/objet.
+function changementDemo(){
+	//meme fonction que changement
+	let ii = demoSelector.selectedIndex;
+	for(let x = 0; x < divIdDemo.length; x++){
+		document.getElementById(divIdDemo[x]).style.display = "none";
+	}
+	if(ii > 0){
+		document.getElementById(divIdDemo[ii-1]).style.display = "block";
+		rgpd.style.display = "block";
+	}
+}
+//début de la fonction submit, cette fonction sert a enlever le surplus d'information lorsque l'on reçoit un mail d'un utilisateur.
+function submit(){
+	//je fais une boucle pour supprimer les child-div de why qui ne sont pas selectionné.
+	for(let ii = 1; ii < whySelector.length; ii++){
+		if(ii != i){
+			document.getElementById(divId[ii-1]).remove();
+		}
+	}
+	//si le selecteur est sur 1 alors je supprime aussi les child-child-div.
+	if(i == 1){
+		for(let ii = 1; ii < productSelector.length; ii++){
+			if(ii != productSelector.selectedIndex){
+				alert(ii+" "+divIdProduct[ii-1]);
+				document.getElementById(divIdProduct[ii-1]).remove();
+			}
+		}
+	//sinon si le selecteur est sur 2 alors je supprime aussi les child-child-div.
+	}else if(i == 2){
+		for(let ii = 1; ii < demoSelector.length; ii++){
+			if(ii != demoSelector.selectedIndex){
+				document.getElementById(divIdDemo[ii-1]).remove();
+			}
+		}
+	}
+}
+</script>
